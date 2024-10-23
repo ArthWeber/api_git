@@ -22,4 +22,5 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(function(erro) {
             alert("Ocorreu um erro ao carregar o perfil, tente mais tarde.")
-        })      })
+        })      
+    })
