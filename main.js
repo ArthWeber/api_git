@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetch('https://api.github.com/users/ArthWeber')
         .then(function(res) {
+            if (!res.ok) { //Verifica se a resposta foi bem-sucedida
+                throw new Error(res.statusText);
+            }
             return res.json();
         })
         .then(function(json) {
@@ -21,6 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
             linkElement.href = json.html_url     
         })
         .catch(function(erro) {
-            alert("Ocorreu um erro ao carregar o perfil, tente mais tarde.")
+            alert("Ocorreu um erro ao carregar o perfil, tente mais tarde." + erro)
         })      
     })
