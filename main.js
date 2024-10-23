@@ -1,70 +1,25 @@
-$(document).ready(function() {
-    const endpoint = `https://api.github.com/users/ArthWeber`;
-    const nameElement = $('#name');
-    const usernameElement = $('#username');
-    const avatarElement = $('#avatar');
-    const reposElement = $('#repos');
-    const followersElement = $('#followers');
-    const followingElement = $('#following');
-    const linkElement = $('#link');
+document.addEventListener('DOMContentLoaded', function() {
+    const nameElement = document.querySelector('#name');
+    const usernameElement = document.querySelector('#username');
+    const avatarElement = document.querySelector('#avatar');
+    const reposElement = document.querySelector('#repos');
+    const followersElement = document.querySelector('#followers');
+    const followingElement = document.querySelector('#following');
+    const linkElement = document.querySelector('#link');
 
-    fetch(endpoint).then(function(res) {
-        return res.json();
-    })
-    .then(function(json) {
-        const nameElement = json.name;
-        const usernameElement = json.login;
-        const avatarElement = json.avatar_url;           
-        const reposElement = json.public_repos          
-        const followersElement = json.followers 
-        const followingElement = json.following 
-        const linkElement = json.html_url     
-    })
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     const nameElement = $('#name').val();;
-//     const usernameElement = $('#username').val();;
-//     const avatarElement = $('#avatar').val();;
-//     const reposElement = $('#repos').val();;
-//     const followersElement = $('#followers').val();;
-//     const followingElement = $('#following').val();;
-//     const linkElement = $('#link').val();;
-
-//     fetch('https://api.github.com/users/ArthWeber')
-//         .then(function(res) {
-//             return res.json();
-//         })
-//         .then(function(json) {
-//             const nameElement = json.name;
-//             const usernameElement = json.login;
-//             const avatarElement = json.avatar_url;           
-//             const reposElement = json.public_repos          
-//             const followersElement = json.followers 
-//             const followingElement = json.following 
-//             const linkElement = json.html_url     
-//         })
-// })
+    fetch('https://api.github.com/users/ArthWeber')
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(json) {
+            nameElement.innerText = json.name;
+            usernameElement.innerText = json.login;
+            avatarElement.src = json.avatar_url;           
+            reposElement.innerText = json.public_repos          
+            followersElement.innerText = json.followers 
+            followingElement.innerText = json.following 
+            linkElement.href = json.html_url     
+        })
+        .catch(function(erro) {
+            alert("Ocorreu um erro ao carregar o perfil, tente mais tarde.")
+        })      })
